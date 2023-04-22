@@ -41,3 +41,13 @@ socket.on(
 ```
 io.getIO().emit("posts", { message: "Post deleted", postId });
 ```
+
+# Deploying the app
+
+-   use environmental variables
+-   use production api keys
+-   reduce error output details (hide sensitive info)
+-   set secure response headers
+-   add asset compression (reduce response size)
+-   configure logging
+-   use SSL/TLS (encript data in transit)
