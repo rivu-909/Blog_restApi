@@ -19,3 +19,25 @@ app.use((req, res, next) => {
 -   we create a jwt while users logging in using a secretString
 -   after which we create a is-auth middleware that checks if the correct token is being used or not for the following requests
 -   while updating and deleting we check for authorization that is the signed in user and the user who created the post is the same or not
+
+## Websockets
+
+-   for realtime communication sent from server to client as requesting updates at some interval to the server from client is quite expensive
+-   the package to be installed on server side is `socket.io` and on client side we use `socket.io-client`
+-   on client side we use some code similar to:
+
+```
+const socket = openSocket('http://localhost:8080');
+
+socket.on(
+    'posts' /*since we are emitting 'posts' signal from server side */,
+    data => {
+        using the arguments handle the state changes
+    })
+```
+
+-   we emit signal on updating, creating and deleting posts as:
+
+```
+io.getIO().emit("posts", { message: "Post deleted", postId });
+```
